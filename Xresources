@@ -1,0 +1,134 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+XTerm*pointerColor: #16A085
+XTerm*faceSize: 8
+
+*pointerColorBackground:          #2B2C2B
+*pointerColorForeground:          #16A085
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+*fading: 35
+*fadeColor: nord3
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
+
+Xcursor.theme:			   Maia
+Xcursor.size:                     0
+
+XTerm*background:                 #272827
+XTerm*foreground:                 #fdf6e3
+XTerm*reverseVideo:               on
+XTerm*selectToClipboard:          true
+
+URxvt.font:			  xft:mononoki:size=8
+URxvt.bold.Font			  xft:mononoki-weight=bold:size=8
+URxvt.depth:                      32
+URxvt*scrollBar:                  false
+URxvt*mouseWheelScrollPage:       true
+URxvt*cursorBlink:                true
+URxvt*background:                 #2E3440
+URxvt*foreground:                 #ECEFF4
+URxvt*saveLines:                  5000
+URxvt.internalBorder:		  10
+
+! Clickable urls
+URxvt.url-select.underline:     true
+URxvt.url-launcher:             /usr/bin/firefox
+URxvt.matcher.button:           1
+
+! Change keybinding for copy/paste
+URxvt*iso14755:                 false
+URxvt.perl-ext-common:		clipboard
+URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:   perl:clipboard:paste<Paste>
+
+! Misc
+URxvt*blurRadius:                14x14
+URxvt*modifier:                  Mod4
+
+
+! ==== ROFI ====
+
+rofi.width:                          80
+rofi.columns:                        2
+
+! Font to use Set from: Default
+rofi.font:                           Mononoki 9
+
+! Border width Set from: Default
+ rofi.bw:                             0
+
+! Padding Set from: Default
+rofi.padding:                        20
+
+! Terminal to use Set from: Default
+ rofi.terminal:                       urxvt
+
+! Set the matching algorithm. (normal, regex, glob, fuzzy) Set from: Default
+rofi.matching:                       fuzzy
+
+! Margin between rows *DEPRECATED* Set from: Default
+rofi.line-margin:                    0
+
+! Separator style (none, dash, solid) *DEPRECATED* Set from: Default
+ rofi.separator-style:                none
+
+! Hide scroll-bar *DEPRECATED* Set from: Default
+rofi.hide-scrollbar:                 true
+
+! Fullscreen Set from: Default
+ rofi.fullscreen:                     false
+
+! Theme
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: #2E3440,  #4C566A,  #2E3440,  #2E3440,  #EBCB8B
+rofi.color-urgent: #2E3440,  #4C566A,  #2E3440,  #2E3440,  #BF616A
+rofi.color-active: #2E3440,  #4C566A,  #2E3440,  #232423,  #EBCB8B
+
+!                  'background',  'border',  'separator'
+rofi.color-window: #2E3440,       #2E3440,   #2E3440
+
+! Display names
+rofi.display-run:                    run 
+rofi.display-drun:                   drun
+
