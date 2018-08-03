@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+count=0
+disconnected="%{F#4C566A}%{T7}%{T-}%{F-}"
+disconnected2="%{F#4C566A}%{T7}%{T-}%{F-}"
+disconnected3="%{F#4C566A}%{T7}%{T-}%{F-}"
+disconnected4="%{F#4C566A}%{T7}%{T-}%{F-}"
+wireless_connected="%{F#81A1C1}%{F-}"
+ethernet_connected="%{F#A3BE8C}%{F-}"
+
+while true; do
+    if ping -c1 www.github.com &>/dev/null; then
+        if (( count < 1 )); then
+            ID="$(ip link | awk '/state UP/ {print $2}')"
+            ((count++))
+        fi
+        if [[ $ID == e* ]]; then
+            echo "$ethernet_connected" ; sleep 20
+        else
+            echo "$wireless_connected" ; sleep 20
+        fi
+    else
+        echo "$disconnected" ; sleep 0.6
+        echo "$disconnected2" ; sleep 0.6
+        echo "$disconnected3" ; sleep 0.6
+        echo "$disconnected4" ; sleep 0.6
+    fi
+done
