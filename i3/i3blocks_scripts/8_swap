@@ -1,0 +1,16 @@
+#!/bin/bash
+# SHOW SWAP USAGE - 4 (FREE)
+_SWAP_ () {
+
+    [ -z "$1" ] && icon=" " || icon="$1"
+
+    swap_usage=$(free -h | awk '/^Swap:/{print $3}');
+    echo "$icon $swap_usage"
+}
+
+case $1 in
+	1 )
+	[ "$#" -gt "1" ] && {echo " $0 : To many Argument " && return 0 }
+	    _SWAP_ "$2"
+	;;
+esac
