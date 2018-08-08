@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo " wm         ─────────|   $GDMSESSION"
+echo " kernel     ─────────|   $(uname -r | sed s/-MANJARO//)"
+echo " packages   ─────────|   $(pacman -Q | wc -l)"
+echo " uptime     ─────────|   $(uptime -p | sed 's/\up //')"
+#echo " shell      ─────────|   $(basename "$(cat "/proc/$PPID/comm")")"
+
