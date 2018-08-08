@@ -240,5 +240,18 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
     ;;
 esac
 
+## PATH FOLDERS
+
+# Local scripts
+[[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
+
+# Polybar scripts
+[[ -d $HOME/.local/bin/polybar ]] && export PATH=$HOME/.local/bin/polybar:$PATH
+
+# Glitchcat and the lot
+[[ -d $HOME/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
+
+
+
 if [ -f /usr/bin/neofetch ]; then neofetch; fi
 if [ -f /usr/bin/fortune ]; then fortune -o; fi
