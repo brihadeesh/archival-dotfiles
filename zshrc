@@ -102,9 +102,9 @@ colors
 setopt prompt_subst
 
 PROMPT='
-%{$fg[green]%}┌───────────────╼ [%{$fg[green]%}%{$fg[white]%} %~ %{$reset_color%}%{$fg[green]%}]%{$fg[green]%}
-└─╼ % [%{$fg_bold[blue]%} %n :: %* %{$reset_color%}%{$fg[green]%}] %[%{$fg[green]%}%{$fg[white]%} %~ %{$reset_color%}%{$fg[green]%}] %{$fg[white]%}⟩%{$fg[cyan]%}⟩%B%(?.%{$fg[red]%}.%{$fg[red]%})⟩ %{$reset_color%}%'
-
+%{$fg[green]%} %~%{$reset_color%}%{$fg[blue]%}
+ └──────────|   % %{$reset_color%}%'
+ 
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"                              # plus/minus     - clean repo
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
