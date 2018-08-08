@@ -1,0 +1,129 @@
+#! /bin/sh
+
+gap=5
+PANEL_HEIGHT=26
+export gap
+export PANEL_HEIGHT
+
+bspc config window_gap $gap;
+bspc config top_padding $(($PANEL_HEIGHT-$gap))
+
+# This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
+#bspc config left_padding -$gap
+#bspc config right_padding -$gap
+#bspc config bottom_padding -$gap
+
+
+## Various settings
+
+# Settings for manual splitting
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config borderless_monocle	 true
+bspc config single_monocle			 true
+bspc config paddingless_monocle  false
+
+# bspc config ignore_ewmh_focus      true
+# bspc config initial_polarity second_child
+
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors true
+
+# bspc config honor_size_hints true
+
+
+## Color settings
+bspc config focused_border_color  "#65737E"
+bspc config normal_border_color   "#2B303B"
+bspc config urgent_border_color   "#BF616A"
+bspc config presel_feedback_color "#88C0D0"
+bspc config border_width 4
+
+
+## Focus follows mouse cursor
+bspc config focus_follows_pointer true
+
+## Workspace names
+# bspc monitor -d I II III IV V VI VII VIII
+bspc monitor -d i ii iii iv v vi vii viii
+# bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
+# bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor -d • • • • • • • • • •
+# bspc monitor -d I II III IV V VI
+# bspc monitor -d 1 2 3 4 5 6 7 8
+
+## This creates and names desktops for multiple monitors.
+# workspaces_multimonitor &
+
+
+## Window rules
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a gcolor2 state=floating center=true
+bspc rule -a lxappearance floating=true center=true
+bspc rule -a conky sticky=on manage=off lower=on
+bspc rule -a polybar layer=above
+bspc rule -a '*:Firefox' private=on desktop=I state=tiled
+bspc rule -a libreoffice state=tiled
+bspc rule -a '*:libreofficedev' state=tiled
+bspc rule -a '*:soffice' state=tiled
+bspc rule -a Nitrogen state=floating center=true
+bspc rule -a open state=floating center=false
+bspc rule -a 'Save file to*' state=floating center=false
+bspc rule -a 'Save' state=floating center=true
+bspc rile -a spectrumyzer sticky=on manage=off lower=on border=off fullscreen=on
+
+bspc desktop I --layout monocle
+# bspc desktop II --layout monocle
+
+
+## Autogap adjusts windowgap automatically according to the number of
+## windows on the desktop. Using it disables negative window gap.
+autogap &
+
+
+## This script balances all windows when new one is spawned
+euclid_balancer &
+
+
+## Edge-switcher switches to next workspace when moves moves to the
+## edge of the monitor (behavior similar to enlightenment)
+# edge-switcher &
+
+
+## External rules: some Manjaro packages provide these
+# Pseudo automatic mode: always splits focused window when opening new window
+bspc config external_rules_command /usr/bin/pseudo_automatic_mode
+
+## Adjust new window: splits biggest windows to keep windows about the same size
+# bspc config external_rules_command /usr/bin/adjust-new-window
+
+
+## Autostart apps
+# Keybindings from sxhkd
+sxhkd &
+
+# Notification service
+dunst -c ~/.config/dunst/dunstrc &
+
+# Numlock
+numlockx on &
+
+# Polkit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# ???
+fix_xcursor &
+
+# Redshift
+redshift &
+
+# Polybar(s)
+$HOME/.config/bspwm/launch.sh bspwm &
+
+## Pywal
+# restore the colorscheme
+# wal -R
+
+# Wallpaper and Compositor
+nitrogen --restore; sleep 1; compton -b &
