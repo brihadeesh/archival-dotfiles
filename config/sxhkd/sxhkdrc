@@ -1,0 +1,189 @@
+### wm independent hotkeys
+
+# terminal emulator - termite
+alt + Return
+	termite
+
+# terminal emulator
+alt + shift + Return
+	urxvt
+
+# program launcher
+alt + d
+	rofi -show drun
+
+# run menu
+alt + grave 
+	rofi -show run
+
+# exit menu - rofi
+
+alt + shift + e
+	bspwm-power -c -p rofi
+
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd && notify-send "sxhkd configuration updated"
+
+# jgmenu
+super + Tab
+	jgmenu_run >/dev/null 2>&1 &
+
+# windowcd (rofi)
+alt + Tab
+	rofi -show window -width 40
+
+# reload Dunst
+alt + shift + d
+	killall dunst && notify-send 'Restarted dunst'
+
+# restart compton
+ctrl + Escape 
+	pkill compton && notify-send 'Killed compton'
+
+ctrl + shift + T
+	compton -b && notify-send 'Started compton'
+
+# scrot 
+ # instant
+super + Print
+	scrot && sleep 2 && notify-send "Saved scrot"
+ # 5 second delay
+super + shift + Print 
+	scrot -d 5 && sleep 6 && notify-send "Saved scrot" 
+
+### bspwm hotkeys
+
+## Power
+
+# quit bspwm normally
+alt + shift + Escape
+	bspc quit
+
+
+## Window 
+
+# close and kill windows
+alt + {_,shift + }q
+	bspc node -{k,c}
+
+# alternate between the tiled and monocle layout
+alt + w
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+alt + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+alt + g
+	bspc node -s biggest
+
+
+## state/flags
+
+# set the window state
+alt + {e,shift + t,shift + space,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+
+## focus/swap
+
+# focus the node in the given direction
+alt + {_,shift + }{left,down,up,right}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+alt + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+alt + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+alt + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+alt + shift + bracket{left,right}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+alt + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-8}
+	bspc {desktop -f,node -d} '^{1-8}'
+
+
+## preselect
+
+# preselect the direction
+alt + ctrl + {left,down,up,right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+alt + ctrl + {1-8}
+	bspc node -o 0.{1-8}
+
+# cancel the preselection for the focused node
+alt + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+alt + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+## move/resize
+
+# expand a window by moving one of its side outward
+alt + super + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {h,j,k,l}
+bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+## Miscellaneous controls
+
+# mpc controls
+XF86Audio{Prev,Next}
+	mpc -q {prev,next}
+
+#super + {left,right}
+#	mpc -q {prev,next}
+
+XF86AudioPlay
+	mpc -q toggle
+
+# brightness controls
+XF86MonBrightness{Down,Up}
+	xbacklight -steps 30 -{dec,inc} 5
+
+# volume controls
+XF86Audio{LowerVolume,RaiseVolume}
+	amixer -q -D pulse sset Master {5%-,5%+)
+
+#super + {down,up}
+#	amixer -q -D pulse sset Master {5%-,5%+)
+
+XF86AudioMute
+	amixer -q -D pulse sset Master toggle
+
+
+## Screenshot
+	
