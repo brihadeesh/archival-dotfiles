@@ -93,6 +93,19 @@ alias df='df -h'                                                # Human-readable
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
 
+# replace neofetch/screenfetch with custom script
+alias neofetch='fetch'
+alias screenfetch='fetch'
+
+# ncmpcpp - useless error messages
+alias ncmpcpp='ncmpcpp -q'
+
+# Screenfetch => lolcat 24bit
+#alias screenfetch='screenfetch | lolcat -t'
+
+# vtop => nord theme
+alias vtop='vtop --theme nord'
+
 # Theming section  
 autoload -U compinit colors zcalc
 compinit -d
