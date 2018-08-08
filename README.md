@@ -3,7 +3,7 @@
 My configs with additional useful scripts. This is work in progress!
 
 ## bspwm (current)
-![2018-08-08-180204_1366x768_scrot](https://user-images.githubusercontent.com/32803930/43865378-133151d2-9b80-11e8-9e0c-8c244c83733a.png)
+![more scrots on imgur](https://imgur.com/a/ZIETWG6)
 
 - wm: bspwm
 - bar: polybar  
