@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Apparently has some issues. Do hit me up if anyone finds a fix
+
 if [[ $(cat "/proc/$PPID/comm" | grep -Z 'termite' = termite) ]]
 	then
 			echo "$(ossifrage)" | lolcat -t
