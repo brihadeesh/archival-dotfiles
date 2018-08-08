@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ $(cat "/proc/$PPID/comm" | grep -Z 'termite' = termite) ]]
+	then
+			echo "$(ossifrage)" | lolcat -t
+			echo "$(fetch-info)" | glitchcat -d 700 -a 100
+			echo "$(fortune -o)" | glitchcat -d 700 -a 100
+	else
+			echo "$(ossifrage)"
+			echo "$(fetch-info)" | glitchcat -d 700 -a 100
+			echo "$(fortune -o)" | glitchcat -d 700 -a 100
+fi
