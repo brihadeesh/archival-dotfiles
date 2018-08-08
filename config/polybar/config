@@ -1,14 +1,23 @@
 #!/usr/bin/polybar
-;:set syn=dosini
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
 
+############################
+######    SETTINGS    ######
+############################
+[settings]
+screenchange-reload = true
+
+
+############################
+######     COLORS     ######
+############################
 [colors]
 white = #ECEFF4
-gray = #4C566A
+gray = #65737E
 black = #232423
 blue = #88C0D0
 yellow = #EBCB8B
@@ -18,70 +27,125 @@ green = #A3BE8C
 magenta = #B48EAD
 background = #2E3440
 
+
+#############################
+######      FONTS      ######
+#############################
+[fonts]
+;font-0 = "Mononoki:size=8;2"
+font-0 = "TerminessTTF Nerd Font:size=8.5;2"
+font-1 = Font Awesome 5 Free:pixelsize=8;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=8;2
+font-3 = Font Awesome 5 Brands:pixelsize=8;2
+;font-4 = "Mononoki:style=Bold:size=8;2"
+font-4 = "TerminessTTF Nerd Font:style=Bold:size=8.5;2"
+font-5 = FontAwesome:size=7;2
+font-6 = fontawesome:size=8;2
+
+
 #############################
 ######     TOP BAR     ######
 #############################
-
 [bar/top]
 monitor = eDP1
 radius = 0.0
 fixed-center = true
 bottom = false
 height = 22
-
+padding-left = 2
+padding-right = 2
+background = ${colors.background}
+foreground = ${colors.white}
+module-margin = 1
+underline-size = 2
 border-bottom-size = 2
 border-color = ${colors.gray}
 
 enable-ipc = true
 
+modules-right = network updates volume backlight battery redshift date
+modules-center = mpdstatus
+modules-left = i3 xwindow
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+font-6 = ${fonts.font-6}
+
+
+################################
+#######    BOTTOM BAR     ######
+################################
+[bar/bottom]
+monitor = eDP1
+width = 100%
+radius = 0.0
+fixed-center = true
+bottom = true
+height = 22
 padding-left = 2
 padding-right = 2
-
-module-margin = 1
- 
-underline-size = 2
-
-modules-right = volume backlight cpu memory battery network updates powerbutton
-modules-center = redshift date
-modules-left = i3 xwindow 
-
 background = ${colors.background}
 foreground = ${colors.white}
+overline-size = 2
+module-margin = 1
+border-top-size = 2
+border-color = ${colors.gray}
 
-font-0 = "Mononoki:size=8;2"
-font-1 = Font Awesome 5 Free:pixelsize=9;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=9;2
-font-3 = Font Awesome 5 Brands:pixelsize=9;2
-font-4 = "Mononoki:style=Bold:size=8;2"
-font-5 = FontAwesome:weight=bold:size=8;2
-font-6 = fontawesome:size=10;2
+enable-ipc = true
+
+modules-right = cpu memory temperature filesystem
+modules-center = mpdprog
+modules-left = uptime
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+font-6 = ${fonts.font-6}
 
 
-#######################################
-######     MODULES - TOP BAR     ######
-#######################################
+#############################
+######     MODULES     ######
+#############################
+;[module/jgmenu]
+;type = custom/script
+;exec = echo ""
+;label = %output%
+;interval = 1
+;format-foregound = ${colors.blue}
+;;format-padding = 1
+;click-left = "jgmenu_run >/dev/null 2>&1 &"
+
 
 [module/network]
 type = custom/script
-exec = ~/.local/bin/polybar/check-network
+exec = check-network
 click-left = networkmanager_dmenu &
-click-right = networkmanager_dmenu &
-;label-padding = 1
+click-right = termite --exec "ncwifi"
 label = %output%
 tail = true
 interval = 0.3
 
+
 [module/i3]
 type = internal/i3
-;format = <label-mode> <label-state>
-;index-sort = true
-;strip-wsnumbers = true
 format = <label-state>
+;format = <label-mode> <label-state>
+index-sort = true
+;strip-wsnumbers = true
+wrapping-scroll = false
+format-padding-right = 1
 
 ;label-focused-font = 3
 ;label-unfocused-font = 3
 ;label-urgent-font = 3
-;label-visible-font = 3 
+;label-visible-font = 3
 
 ;label-focused = 
 ;label-focused = %index%
@@ -104,12 +168,16 @@ format = <label-state>
 ;label-visible-foreground = ${colors.white}
 ;label-visible-padding = 1
 
+;label-mode-padding = 2
+;label-mode-foreground = ${colors.black}
+;label-mode-background = ${colors.gray}
 
 label-focused = %name%
 label-focused-background = ${colors.gray}
 label-focused-foreground = ${colors.white}
 label-focused-overline  = ${colors.gray}
 label-focused-padding = 2
+label-focused-font = 5
 
 label-unfocused = %name%
 label-unfocused-padding = 1
@@ -129,87 +197,82 @@ label-empty-foreground = ${colors.gray}
 label-empty-overline = ${colors.background}
 label-empty-padding = 1
 
-index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.gray}
-
 label-visible = %name%
 label-visible-overline = ${colors.background}
 label-visible-padding = 2
 
-format-padding-right = 1
 
 [module/xwindow]
 type = internal/xwindow
 label =   %title:0:40:...%
-label-empty = [  Desktop  ]
-label-empty-foreground = ${colors.gray}
+label-empty = root-window
+label-empty-foreground = ${colors.yellow}
+label-background = ${colors.gray}
+label-padding = 1
+
 
 [module/battery]
-type = custom/script
-exec = ~/.local/bin/polybar/batt
-label = %output% 
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 100
+interval = 1
 
+format-charging = <label-charging>
+label-charging =  %percentage:3%%
 
-;type = internal/battery
-;battery = BAT1
-;adapter = AC
-;full-at = 100
-;interval = 1
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage:3%%
 
-;format-charging = <label-charging>
-;label-charging =  %percentage:3%%
+format-full = <label-full>
+label-full =  %percentage:3%%
 
-;format-discharging = <ramp-capacity> <label-discharging>
-;label-discharging = %percentage:3%%
+ramp-capacity-0 = 
+ramp-capacity-0-font = 7
+ramp-capacity-1 = 
+ramp-capacity-1-font = 7
+ramp-capacity-2 = 
+ramp-capacity-2-font = 7
+ramp-capacity-3 = 
+ramp-capacity-3-font = 7
+ramp-capacity-4 = 
+ramp-capacity-4-font = 7
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1-foreground = ${colors.orange}
+ramp-capacity-2-foreground = ${colors.yellow}
+ramp-capacity-foreground = ${colors.white}
 
-;format-full = <label-full>
-;label-full =  %percentage:3%%
-
-;ramp-capacity-0 = 
-;ramp-capacity-0-font = 7 
-;ramp-capacity-1 = 
-;ramp-capacity-1-font = 7
-;ramp-capacity-2 = 
-;ramp-capacity-2-font = 7
-;ramp-capacity-3 = 
-;ramp-capacity-3-font = 7
-;ramp-capacity-4 = 
-;ramp-capacity-4-font = 7
-;ramp-capacity-0-foreground = ${colors.red}
-;ramp-capacity-1-foreground = ${colors.orange}
-;ramp-capacity-2-foreground = ${colors.yellow}
-;ramp-capacity-foreground = ${colors.white}
 
 [module/date]
 type = internal/date
-date = "%{A1:gsimplecal & disown:}%{T5}%a %m/%d - %H:%M%{T-}%{A}"
+date-alt = "%a - %m/%d"
+date = "%{T5}%H:%M%{T-}"
 interval = 1
 format-padding = 1
+format-background = ${colors.gray}
+
 
 [module/updates]
 type = custom/script
-exec = ~/.local/bin/polybar/updates-arch-combined
-;exec = echo '%{F${colors.gray}}  0 %{F-}'
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+exec = updates-arch-combined
 interval = 20
-label = %output%
-click-right = rofi -e  "Start update?" && termite -e "sudo pacman -Syu"
+tail = true
+label = %{A1:termite --exec=pacli & disown:}%output%%{A-}
 
-[module/powerbutton]
-type = custom/text
-content-background = ${colors.red}
-content-padding = 1
-content = 
-click-left = ~/.local/bin/polybar/power-menu -c -p rofi
+
+;[module/powerbutton]
+;type = custom/text
+;content-background = ${colors.red}
+;content-padding = 1
+;content = 
+;click-left = power-menu -c -p rofi
+
 
 [module/volume]
 type = internal/pulseaudio
-
 format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage:3%% 
+label-volume = %percentage:3%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-foreground = ${colors.gray}
@@ -242,6 +305,7 @@ ramp-volume-3-foreground = ${colors.red}
 ;bar-volume-empty-font = 5
 ;bar-volume-empty-foreground = ${colors.gray}
 
+
 [module/backlight]
 type = internal/xbacklight
 card = intel_backlight
@@ -250,26 +314,33 @@ format = <ramp> <label>
 scroll-up = "xbacklight -inc 5 -steps 30; notify-send 'brightness up'"
 scroll-down = "xbacklight -dec 5 -steps 30; notify-send 'brightness down'"
 
+label = %percentage:3%%
+
 ramp-0 = 
 ramp-0-font = 3
-ramp-1 = 
+ramp-0-foreground = ${colors.red}
+ramp-1 = 
 ramp-1-font = 3
+ramp-1-foreground = ${colors.orange}
 ramp-2 = 
 ramp-2-font = 3
+ramp-2-foreground = ${colors.yellow}
 ramp-3 = 
 ramp-3-font = 3
+ramp-3-foreground = ${colors.white}
 
-ramp-0-foreground = ${colors.gray}
-ramp-1-foreground = ${colors.yellow}
-ramp-2-foreground = ${colors.orange}
-ramp-3-foreground = ${colors.red}
+;ramp-1 = 
+;ramp-2 = 
+;ramp-3 = 
+;ramp-3-font = 3
 
-label = %percentage:3%%
 
 [module/cpu]
 type = internal/cpu
 interval = 0.5
 
+;format = <label> <bar-load>
+;format-padding = 1
 format = <label> <ramp-coreload>
 
 label = %{A1:termite --exec=htop & disown:} %percentage:3%%%{A}
@@ -291,15 +362,24 @@ ramp-coreload-5-foreground = ${colors.orange}
 ramp-coreload-6-foreground = ${colors.orange}
 ramp-coreload-7-foreground = ${colors.red}
 
+;ramp-coreload-0-foreground = #55aa55
+;ramp-coreload-1-foreground = #55aa55
+;ramp-coreload-2-foreground = #55aa55
+;ramp-coreload-3-foreground = #55aa55
+;ramp-coreload-4-foreground = #f5a70a
+;ramp-coreload-5-foreground = #f5a70a
+;ramp-coreload-6-foreground = #ff5555
+;ramp-coreload-7-foreground = #ff5555
+
 ;bar-load-width = 20
-;bar-load-foreground-0 = ${colors.blue} 
+;bar-load-foreground-0 = ${colors.blue}
 ;bar-load-foreground-1 = ${colors.blue}
 ;bar-load-foreground-2 = ${colors.yellow}
 ;bar-load-foreground-3 = ${colors.red}
 ;bar-load-gradient = false
 ;bar-load-indicator = |
 ;bar-load-indicator-font = 5
-;bar-load-indicator-foreground = 
+;bar-load-indicator-foreground =
 ;bar-load-fill = |
 ;bar-load-fill-font = 5
 ;bar-load-empty = |
@@ -307,11 +387,13 @@ ramp-coreload-7-foreground = ${colors.red}
 ;bar-load-empty-foreground = ${colors.gray}
 ;bar-load-font = 5
 
+
 [module/memory]
 type = internal/memory
 interval = 0.2
 
 format = <label> <ramp-used>
+;format-padding = 1
 label = %{A1:termite --exec=htop & disown:} %percentage_used:3%%%{A}
 
 ramp-used-0 = ▁
@@ -347,63 +429,15 @@ ramp-used-7-foreground = ${colors.red}
 ;bar-used-gradient = false
 ;bar-font = 5
 
+
 [module/redshift]
 type = custom/script
-interval = 0.2
-exec = ~/.local/bin/polybar/redshift-button
+interval = 1
+exec = redshift-button
 tail = true
 label = %{T3}%output%%{T}
-click-left = ~/.local/bin/polybar/redshift-button toggle
+click-left = redshift-button toggle
 
-################################
-#######    BOTTOM BAR     ######
-################################
-
-[bar/bottom]
-monitor = eDP1
-width = 100%
-radius = 0.0
-fixed-center = true
-bottom = true
-height = 22
-
-enable-ipc = true
-
-module-margin = 1
-padding-left = 2
-padding-right = 1
-overline-size = 2
-
-border-top-size = 2
-border-color = ${colors.gray}
-
-modules-right = temperature filesystem 
-modules-center = mpd
-modules-left = hostname
-
-background = ${colors.background}
-foreground = ${colors.white}
-
-;Systray
-tray-position = right
-tray-padding = 1
-tray-transparent = false
-tray-background = ${colors.black}
-tray-detached = false
-tray-scale = 1.0
-
-font-0 = "Mononoki:size=8;2:antialias=false"
-font-1 = Font Awesome 5 Free:pixelsize=9;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=9;2
-font-3 = Font Awesome 5 Brands:pixelsize=9;2
-font-4 = Tamsyn:size=8;2
-font-5 = FontAwesome:size=8;2
-font-6 = "Mononoki:style=Bold:size=8;2"
-
-
-############################################
-#######     MODULES - BOTTOM BAR     #######
-############################################
 
 [module/filesystem]
 type = internal/fs
@@ -412,53 +446,79 @@ interval = 25
 mount-0 = /
 
 format-mounted = <label-mounted>
+
 label-mounted =  %percentage_used:3%%
 label-unmounted = %mountpoint%: %percentage_used:3%%
+;label-mounted-padding = 1
+;label-mounted-foreground = ${colors.white}
+
 
 [module/mpd]
 type = internal/mpd
 
 host     = 127.0.0.1
 port     = 6600
-interval = 2
-
-format-online = <icon-prev> <label-time> <toggle> <label-song> <icon-next>
-format-playing = ${self.format-online}
-format-paused = ${self.format-online}
-format-stopped = ${self.format-online}
+interval = 1
 
 format-spacing = 3
-label-song = "%{A1:mpc toggle:}%{A3:termite --exec='ncmpcpp' & disown:}%artist%  -  %title:0:30:...%%{A-}%{A-}"
-label-time = "%{A1:mpc toggle:}%{A3:termite --exec='ncmpcpp' & disown:}%elapsed% / %total%%{A-}%{A-}"
+label-song = "%{A1:mpc -q next:}%artist%%{A-} %{A1:mpc -q toggle:}%{A-} %{A1:mpc -q prev:}%title:0:30:...%%{A-}"
+;label-time = "%{A1:mpc -q toggle:}[%elapsed%/%total%]%{A-}"
+;label-time-foreground = ${colors.blue}
 
-icon-play = "  "
-icon-pause = "  "
-icon-stop = "  "
-icon-prev = "  "
-icon-next = "  "
+icon-play	   = "  "
+icon-pause	   = "  "
+icon-stop      = "  "
+icon-prev      = "  "
+icon-next      = "  "
 
 icon-prev-foreground = ${colors.orange}
 icon-next-foreground = ${colors.orange}
 
-bar-progress-width = 15
-bar-progress-indicator = |
+bar-progress-width = 50
+bar-progress-indicator = █
 bar-progress-indicator-foreground = ${colors.red}
-bar-progress-indicator-font = 1
-bar-progress-fill = ─
-bar-progress-fill-font = 1
-bar-progress-empty = ─
-bar-progress-empty-font = 1
+bar-progress-indicator-font = 5
+bar-progress-fill = |
+bar-progress-fill-font = 5
+bar-progress-fill-foreground = ${colors.green}
+bar-progress-empty = |
+bar-progress-empty-font = 5
 bar-progress-empty-foreground = ${colors.gray}
 
-[module/hostname]
+
+[module/mpdstatus]
+inherit = module/mpd
+format-online = <label-song>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = stopped
+format-paused-foreground = ${colors.gray}
+format-stopped-foreground = ${colors.gray}
+
+[module/mpdprog]
+inherit = module/mpd
+
+format-online = <bar-progress>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = stopped
+format-paused-foreground = ${colors.gray}
+format-stopped-foreground = ${colors.gray}
+
+
+[module/uptime]
 type = custom/script
-exec = echo "%{F#D08770}%{T7}$(uname -n)%{T-}%{F-}" "%{F#88C0D0}up%{F-}" "%{F#BF616A}$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')%{F-}"
+;exec = echo "%{F#D08770}%{T7}$(uname -n)%{T-}%{F-}" "%{F#88C0D0}up%{F-} -> " "%{F#BF616A}$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ ;days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')%{F-}"
+exec = uptime-polybar
 label = %output%
-interval = 1
+interval = 1
+format-background = ${colors.gray}
+format-padding = 1
+
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 3
+thermal-zone = 4
 warn-temperature = 60
 interval = 1
 
@@ -466,8 +526,8 @@ format = <label> <ramp>
 format-warn = <label-warn> <ramp>
 format-warn-foreground = ${colors.red}
 
-label = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%%{A}
-label-warn = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%% {A} 
+label = %{A1:termite --exec='watch sensors' & disown:}%{T3}%{T-} %temperature-c%%{A}
+label-warn = %{A1:termite --exec='watch sensors' & disown:}%{T3}%{T-} %temperature-c%% {A}
 label-warn-foreground = ${colors.red}
 
 ramp-0 = ▁
@@ -486,6 +546,3 @@ ramp-6 = ▇
 ramp-6-foreground = ${colors.orange}
 ramp-7 = █
 ramp-7-foreground = ${colors.red}
-
-; vim:ft=dosini
-
