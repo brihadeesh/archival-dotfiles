@@ -4,6 +4,7 @@
 margin-top = 0
 margin-bottom = 0
 
+
 ############################
 ######    SETTINGS    ######
 ############################
@@ -25,8 +26,6 @@ red = #BF616A
 green = #A3BE8C
 magenta = #B48EAD
 background = #2E3440
-
-;include ~/Misc/nord-xresources/src/nord
 
 
 #############################
@@ -361,29 +360,26 @@ ramp-used-7-foreground = ${colors.red}
 ;bar-used-gradient = false
 ;bar-font = 5
 
-[module/redshift]
-type = custom/script
-interval = 0.2
-exec = redshift-button
-tail = true
-label = %{T3}%output%%{T}
-click-left = redshift-button toggle
+;[module/redshift]
+;type = custom/script
+;interval = 0.2
+;exec = redshift-button
+;tail = true
+;label = %{T3}%output%%{T}
+;click-left = redshift-button toggle
 
-############################################
-#######     MODULES - BOTTOM BAR     #######
-############################################
 
-[module/filesystem]
-type = internal/fs
-interval = 25
+;[module/filesystem]
+;type = internal/fs
+;interval = 25
 
-mount-0 = /
+;mount-0 = /
 
-format-mounted = <label-mounted>
+;format-mounted = <label-mounted>
 
-label-mounted =  %percentage_used:3%%
-label-unmounted = %mountpoint%: %percentage_used:3%%
-;label-mounted-padding = 1
+;label-mounted =  %percentage_used:3%%
+;label-unmounted = %mountpoint%: %percentage_used:3%%
+;;label-mounted-padding = 1
 
 ;label-mounted-foreground = ${colors.white}
 
@@ -421,15 +417,17 @@ icon-next      = "  "
 icon-prev-foreground = ${colors.orange}
 icon-next-foreground = ${colors.orange}
 
-bar-progress-width = 15
-bar-progress-indicator = |
+bar-progress-width = 50
+bar-progress-indicator = █
 bar-progress-indicator-foreground = ${colors.red}
-bar-progress-indicator-font = 1
-bar-progress-fill = ─
-bar-progress-fill-font = 1
-bar-progress-empty = ─
-bar-progress-empty-font = 1
+bar-progress-indicator-font = 5
+bar-progress-fill = |
+bar-progress-fill-font = 5
+bar-progress-fill-foreground = ${colors.green}
+bar-progress-empty = |
+bar-progress-empty-font = 5
 bar-progress-empty-foreground = ${colors.gray}
+
 
 [module/uptime]
 type = custom/script
@@ -439,6 +437,7 @@ label = %output%
 interval = 1
 ;format-prefix = "  "
 ;format-prefix-background = ${colors.gray}
+
 
 [module/jgmenu]
 type = custom/script
@@ -451,33 +450,34 @@ interval = 1
 format-foregound = ${colors.blue}
 click-left = "jgmenu_run >/dev/null 2>&1 &"
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 3
-warn-temperature = 60
-interval = 1
 
-format = <label> <ramp>
-format-warn = <label-warn> <ramp>
-format-warn-foreground = ${colors.red}
+;[module/temperature]
+;type = internal/temperature
+;thermal-zone = 3
+;warn-temperature = 60
+;interval = 1
 
-label = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%%{A}
-label-warn = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%% {A}
-label-warn-foreground = ${colors.red}
+;format = <label> <ramp>
+;format-warn = <label-warn> <ramp>
+;format-warn-foreground = ${colors.red}
 
-ramp-0 = ▁
-ramp-0-foreground = ${colors.gray}
-ramp-1 = ▂
-ramp-1-foreground = ${colors.green}
-ramp-2 = ▃
-ramp-2-foreground = ${colors.green}
-ramp-3 = ▄
-ramp-3-foreground = ${colors.yellow}
-ramp-4 = ▅
-ramp-4-foreground = ${colors.yellow}
-ramp-5 = ▆
-ramp-5-foreground = ${colors.orange}
-ramp-6 = ▇
-ramp-6-foreground = ${colors.orange}
-ramp-7 = █
-ramp-7-foreground = ${colors.red}
+;label = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%%{A}
+;label-warn = %{A1:termite --exec='watch sensors' & disown:} %temperature-c%% {A}
+;label-warn-foreground = ${colors.red}
+
+;ramp-0 = ▁
+;ramp-0-foreground = ${colors.gray}
+;ramp-1 = ▂
+;ramp-1-foreground = ${colors.green}
+;ramp-2 = ▃
+;ramp-2-foreground = ${colors.green}
+;ramp-3 = ▄
+;ramp-3-foreground = ${colors.yellow}
+;ramp-4 = ▅
+;ramp-4-foreground = ${colors.yellow}
+;ramp-5 = ▆
+;ramp-5-foreground = ${colors.orange}
+;ramp-6 = ▇
+;ramp-6-foreground = ${colors.orange}
+;ramp-7 = █
+;ramp-7-foreground = ${colors.red}
