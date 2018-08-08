@@ -4,7 +4,8 @@ My configs with additional useful scripts. This is work in progress!
 
 ## bspwm (current)
 ![Imgur](https://i.imgur.com/zltXuYQ.png)
-![More scrots](https://imgur.com/zltXuYQ)
+
+[More scrots](https://imgur.com/zltXuYQ)
 
 - wm: bspwm
 - bar: polybar  
