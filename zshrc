@@ -251,7 +251,23 @@ esac
 # Glitchcat and the lot
 [[ -d $HOME/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
 
+# Custom neofetch replacement
+#fetch
+if [[ $(cat "/proc/$PPID/comm" | grep -Z 'termite') = termite ]]
+	then
+			echo "$(ossifrage3)" | lolcat -t
+			echo "$(fetch-info)" | glitchcat -d 700 -a 100
+		  echo " terminal   ─────────|   $(basename "$(cat "/proc/$PPID/comm")")" | glitchcat -d 300 -a 100
+			echo " "
+		  echo " "
+			echo "$(fortune -o)" | glitchcat -d 700 -a 100
+	else
+			echo "$(ossifrage3)"
+			echo "$(fetch-info)" | glitchcat -d 700 -a 100
+			echo " terminal   ─────────|   $(basename "$(cat "/proc/$PPID/comm")")" | glitchcat -d 300 -a 100
+			echo " "
+			echo " "
+			echo "$(fortune -o)" | glitchcat -d 700 -a 100
+fi
 
-
-if [ -f /usr/bin/neofetch ]; then neofetch; fi
-if [ -f /usr/bin/fortune ]; then fortune -o; fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
