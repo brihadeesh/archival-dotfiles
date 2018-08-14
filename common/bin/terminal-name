@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $(echo "$TERM" | grep -Z 'xterm-termite') = xterm-termite ]]
+	then
+			echo "termite"
+    elif [[ $(echo "$TERM" | grep -Z 'st-256color') = st-256color ]]; then
+      echo "st"
+	else
+			echo "urxvt"
+fi

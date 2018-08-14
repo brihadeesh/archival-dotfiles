@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+count=0
+SSID=$(iwgetid -r)
+disconnected=""
+disconnected2=""
+disconnected3=""
+disconnected4=""
+wireless_connected=""
+ethernet_connected=""
+
+while true; do
+    if ping -c1 www.github.com &>/dev/null; then
+        if (( count < 1 )); then
+            ID="$(ip link | awk '/state UP/ {print $2}')"
+            ((count++))
+        fi
+        if [[ $ID == e* ]]; then
+            echo "%{F#A3BE8C}$ethernet_connected $SSID%{F-}" ; sleep 20
+        else
+            echo "%{F#88C0D0}%{T6}$wireless_connected%{T-} $SSID%{F-}" ; sleep 20
+        fi
+    else
+        echo "%{F#65737E}$disconnected down%{F-}" ; sleep 0.3
+        echo "%{F#65737E}%{T3}$disconnected2%{T-} down%{F-}" ; sleep 0.3
+        echo "%{F#65737E}%{T3}$disconnected3%{T-} down%{F-}" ; sleep 0.3
+        echo "%{F#65737E}%{T3}$disconnected4%{T-} down%{F-}" ; sleep 0.3
+    fi
+done

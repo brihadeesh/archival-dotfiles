@@ -1,0 +1,10 @@
+#!/bin/sh
+# Use dmenu to open and edit a file from a given list.
+# Copyright 2010-2013 Tom Vincent <http://tlvince.com/contact/>
+TERMINAL='termite'
+EDITOR='atom'
+LOCAL="${LOCAL:-${XDG_LOCAL_HOME:-$HOME/.local/share}/dmenu/edit}"
+[ -f "$LOCAL" ] || exit 1
+
+file="$(rofi -width 40 -l 5 -dmenu -p "edit" -i "$@" < "$LOCAL")"
+[ "$file" ] && "${SHELL:-/bin/sh}" -c "$TERMINAL --exec $EDITOR \"$file\" &" &

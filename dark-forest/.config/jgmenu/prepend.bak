@@ -1,0 +1,5 @@
+  Firefox,firefox,firefox
+  File manager,pcmanfm,system-file-manager
+  Termite,termite,utilities-terminal
+  Edit configs,~/.local/bin/dmenu_edit
+^sep()

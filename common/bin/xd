@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+case "$(wmctrl -m | head -n 1 | cut -d\  -f 2)" in
+    bspwm)
+        bspc quit;;
+    i3)
+        i3-msg exit;;
+    *)
+        pkill sxhkd;;
+esac
+

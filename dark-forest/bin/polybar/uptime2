@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+HOST="$(uname -n)"
+UPONE="$(uptime -p|sed -E 's/ hours,/h/g; s/ hour,/h/g; s/ minutes/m/g; s/ minutes,/m/g; s/ minute,/m/g; s/ minute,/m/g; s/ days,/d/g; s/ day,/d/g; s/up //g')"
+
+
+echo "%{F#A3BE8C}$HOST%{F-} up %{F#88C0D0}$UPONE%{F-}"

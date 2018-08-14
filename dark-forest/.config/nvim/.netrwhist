@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/etc/skel'
+let g:netrw_dirhist_2='/home/ossix/bin'
+let g:netrw_dirhist_3='/home/ossix/bin/polybar'
+let g:netrw_dirhist_4='/home/ossix/.config/gtk-2.0'
+let g:netrw_dirhist_5='/home/ossix/.config/gtk-3.0'
+let g:netrw_dirhist_6='/home/ossix/bin/i3'
+let g:netrw_dirhist_7='/home/ossix/.config/mpv'
+let g:netrw_dirhist_8='/etc/mpv'

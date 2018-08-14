@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+split="/tmp/i3split"
+current="$(cat $split)"
+
+if [[ "$current" == "vertical" ]]; then
+	echo "horizontal" > "$split"
+else
+	echo "vertical" > "$split"
+fi
+
+i3-msg split "$current" && notify-send "$current"

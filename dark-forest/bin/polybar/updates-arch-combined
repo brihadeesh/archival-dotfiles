@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+ICON=/usr/share/icons/Papirus-Light/32x32/apps/system-software-update.svg
+
+total() { UPD=$(checkupdates | wc -l) ;}
+
+while true; do
+    total
+    if hash notify-send &>/dev/null; then
+        if (( UPD > 50 )); then
+            notify-send -u critical -i $ICON "You really need to update!!" "$UPD New packages"
+        elif (( UPD > 25 )); then
+            notify-send -u normal -i $ICON "You should update soon" "$UPD New packages"
+        elif (( UPD > 2 )); then
+            notify-send -u low -i $ICON "$UPD New packages"
+        fi
+    fi
+
+    while (( UPD > 0 )); do
+        if (( UPD == 1 )); then
+            echo "%{F#D08770} $UPD%{F-}"
+        elif (( UPD > 1 )); then
+            echo "%{F#BF616A} $UPD%{F-}"
+        fi
+        sleep 10
+        total
+    done
+
+    while (( UPD == 0 )); do
+        echo "%{F#65737E} 0%{F-}"
+        sleep 1800
+        total
+    done
+done

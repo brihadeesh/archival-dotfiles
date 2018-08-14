@@ -1,0 +1,314 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! Base colors
+! Project:    Nord XResources
+! Version:    0.1.0
+! Repository: https://github.com/arcticicestudio/nord-xresources
+! License:    MIT
+
+#define nord0 #2B303B
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #65737E
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   [85]nord0
+*.cursorColor:  nord4
+*fading: 35
+*fadeColor: nord3
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
+
+Xcursor.theme: Chameleon-Pearl-Small-0.5
+Xcursor.size:                     0
+
+! xterm
+xterm*font: TerminessTTF Nerd Font
+xterm*faceName: TerminessTTF Nerd FOnt:size=9:antialias=false
+xterm*loginShell: true
+xterm*vt100*geometry: 90x34
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-256color
+xterm*eightBitInput: false
+
+! URxvt
+URxvt*saveline: 15000
+URxvt*termName: rxvt-256color
+URxvt*iso14755: false
+URxvt*depth: 32
+! URxvt*background: [95]#1C2023
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0
+URxvt*letterSpace: -1
+URxvt.font: xft:TerminessTTF Nerd Font:size=9
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.m-c: perl:clipboard:copy
+URxvt.keysym.m-v: perl:clipboard:paste
+URxvt.urlLauncher: exo-open
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+URxvt.geometry: 90x30
+URxvt.tabbed.tabbar-fg: 4
+URxvt.tabbed.tabbar-bg: 16
+URxvt.tabbed.tab-fg: 15
+URxvt.tabbed.tab-bg: 4
+URxvt*buffered: false
+
+! UXTerm
+UXTerm*termName: xterm-256color
+UXTerm*cursorColor: white
+UXTerm*VT100.geometry: 90x30
+UXTerm*font: DejaVu Sans Mono
+UXTerm*faceSize: 10
+UXTerm*dynamicColors: true
+UXTerm*utf8: 2
+UXTerm*eightBitInput: true
+UXTerm*saveLines: 10000
+UXTerm*scrollKey: true
+UXTerm*scrollTtyOutput: false
+UXTerm*scrollBar: false
+UXTerm*rightScrollBar: false
+UXTerm*jumpScroll: true
+UXTerm*multiScroll: true
+UXTerm*toolBar: false
+
+! ==== ROFI ====
+!
+! Enabled modi Set from: Default
+! rofi.modi:                           drun,run
+! Window width Set from: Default
+ rofi.width:                          80
+! Number of lines Set from: Default
+! rofi.lines:                          15
+! Number of columns Set from: Default
+ rofi.columns:                        2
+! Font to use Set from: Default
+rofi.font:                           TerminessTTF Nerd Font 9
+! Border width Set from: Default
+ rofi.bw:                             3
+! Location on screen Set from: Default
+! rofi.location:                       0
+! Padding Set from: Default
+rofi.padding:                        20
+! Terminal to use Set from: Default
+ rofi.terminal:                       urxvt
+! Cycle through the results list Set from: Default
+rofi.cycle:                          false
+! Enable sidebar-mode Set from: Default
+! Set the matching algorithm. (normal, regex, glob, fuzzy) Set from: Default
+rofi.matching:                       fuzzy
+! Margin between rows *DEPRECATED* Set from: Default
+rofi.line-margin:                    0
+! Separator style (none, dash, solid) *DEPRECATED* Set from: Default
+ rofi.separator-style:                none
+! Hide scroll-bar *DEPRECATED* Set from: Default
+rofi.hide-scrollbar:                 true
+! Fullscreen Set from: Default
+ rofi.fullscreen:                     false
+
+! Colors
+! State:					'bg',     'fg',     'bgalt', 'hlbg', 'hlfg'
+rofi.color-normal: #2B303B,  #65737E,  #2B303B,  #2B303B,  #EBCB8B
+rofi.color-urgent: #2B303B,  #65737E,  #2B303B,  #2B303B,  #BF616A
+rofi.color-active: #2B303B,  #65737E,  #2B303B,  #2B303B,  #EBCB8B
+
+!                  'background',  'border', 	'separator'
+rofi.color-window: #2B303B,        #65737E,	  #2B303B
+
+! Window names
+! The display name of this browser Set from: Default
+rofi.display-window:                 xwindows
+! The display name of this browser Set from: Default
+rofi.display-windowcd:		     xwindows
+! The display name of this browser Set from: Default
+rofi.display-run:                    exec
+! The display name of this browser Set from: Default
+! rofi.display-ssh:
+! The display name of this browser Set from: Default
+rofi.display-drun:                   drun
+! The display name of this browser Set from: Default
+! rofi.display-combi:
+! The display name of this browser Set from: Default
+! rofi.display-keys:
+
+! Keybindings
+! Paste primary selection Set from: Default
+! rofi.kb-primary-paste:               Control+V,Shift+Insert
+! Paste clipboard Set from: Default
+! rofi.kb-secondary-paste:             Control+v,Insert
+! Clear input line Set from: Default
+! rofi.kb-clear-line:                  Control+w
+! Beginning of line Set from: Default
+! rofi.kb-move-front:                  Control+a
+! End of line Set from: Default
+! rofi.kb-move-end:                    Control+e
+! Move back one word Set from: Default
+! rofi.kb-move-word-back:              Alt+b
+! Move forward one word Set from: Default
+! rofi.kb-move-word-forward:           Alt+f
+! Move back one char Set from: Default
+! rofi.kb-move-char-back:              Left,Control+b
+! Move forward one char Set from: Default
+! rofi.kb-move-char-forward:           Right,Control+f
+! Delete previous word Set from: Default
+! rofi.kb-remove-word-back:            Control+Alt+h,Control+BackSpace
+! Delete next word Set from: Default
+! rofi.kb-remove-word-forward:         Control+Alt+d
+! Delete next char Set from: Default
+! rofi.kb-remove-char-forward:         Delete,Control+d
+! Delete previous char Set from: Default
+! rofi.kb-remove-char-back:            BackSpace,Control+h
+! Delete till the end of line Set from: Default
+! rofi.kb-remove-to-eol:               Control+k
+! Delete till the start of line Set from: Default
+! rofi.kb-remove-to-sol:               Control+u
+! Accept entry Set from: Default
+! rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
+! Use entered text as command (in ssh/run modi) Set from: Default
+! rofi.kb-accept-custom:               Control+Return
+! Use alternate accept command. Set from: Default
+! rofi.kb-accept-alt:                  Shift+Return
+! Delete entry from history Set from: Default
+! rofi.kb-delete-entry:                Shift+Delete
+! Switch to the next mode. Set from: Default
+! rofi.kb-mode-next:                   Shift+Right,Control+Tab
+! Switch to the previous mode. Set from: Default
+! rofi.kb-mode-previous:               Shift+Left,Control+ISO_Left_Tab
+! Go to the previous column Set from: Default
+! rofi.kb-row-left:                    Control+Page_Up
+! Go to the next column Set from: Default
+! rofi.kb-row-right:                   Control+Page_Down
+! Select previous entry Set from: Default
+! rofi.kb-row-up:                      Up,Control+p,ISO_Left_Tab
+! Select next entry Set from: Default
+! rofi.kb-row-down:                    Down,Control+n
+! Go to next row, if one left, accept it, if no left next mode. Set from: Default
+! rofi.kb-row-tab:                     Tab
+! Go to the previous page Set from: Default
+! rofi.kb-page-prev:                   Page_Up
+! Go to the next page Set from: Default
+! rofi.kb-page-next:                   Page_Down
+! Go to the first entry Set from: Default
+! rofi.kb-row-first:                   Home,KP_Home
+! Go to the last entry Set from: Default
+! rofi.kb-row-last:                    End,KP_End
+! Set selected item as input text Set from: Default
+! rofi.kb-row-select:                  Control+space
+! Take a screenshot of the rofi window Set from: Default
+! rofi.kb-screenshot:                  Alt+S
+! Toggle case sensitivity Set from: Default
+! rofi.kb-toggle-case-sensitivity:     grave,dead_grave
+! Toggle sort Set from: Default
+! rofi.kb-toggle-sort:                 Alt+grave
+! Quit rofi Set from: Default
+! rofi.kb-cancel:                      Escape,Control+g,Control+bracketleft
+! Custom keybinding 1 Set from: Default
+! rofi.kb-custom-1:                    Alt+1
+! Custom keybinding 2 Set from: Default
+! rofi.kb-custom-2:                    Alt+2
+! Custom keybinding 3 Set from: Default
+! rofi.kb-custom-3:                    Alt+3
+! Custom keybinding 4 Set from: Default
+! rofi.kb-custom-4:                    Alt+4
+! Custom Keybinding 5 Set from: Default
+! rofi.kb-custom-5:                    Alt+5
+! Custom keybinding 6 Set from: Default
+! rofi.kb-custom-6:                    Alt+6
+! Custom Keybinding 7 Set from: Default
+! rofi.kb-custom-7:                    Alt+7
+! Custom keybinding 8 Set from: Default
+! rofi.kb-custom-8:                    Alt+8
+! Custom keybinding 9 Set from: Default
+! rofi.kb-custom-9:                    Alt+9
+! Custom keybinding 10 Set from: Default
+! rofi.kb-custom-10:                   Alt+0
+! Custom keybinding 11 Set from: Default
+! rofi.kb-custom-11:                   Alt+exclam
+! Custom keybinding 12 Set from: Default
+! rofi.kb-custom-12:                   Alt+at
+! Csutom keybinding 13 Set from: Default
+! rofi.kb-custom-13:                   Alt+numbersign
+! Custom keybinding 14 Set from: Default
+! rofi.kb-custom-14:                   Alt+dollar
+! Custom keybinding 15 Set from: Default
+! rofi.kb-custom-15:                   Alt+percent
+! Custom keybinding 16 Set from: Default
+! rofi.kb-custom-16:                   Alt+dead_circumflex
+! Custom keybinding 17 Set from: Default
+! rofi.kb-custom-17:                   Alt+ampersand
+! Custom keybinding 18 Set from: Default
+! rofi.kb-custom-18:                   Alt+asterisk
+! Custom Keybinding 19 Set from: Default
+! rofi.kb-custom-19:                   Alt+parenleft
+! Select row 1 Set from: Default
+! rofi.kb-select-1:                    Super+1
+! Select row 2 Set from: Default
+! rofi.kb-select-2:                    Super+2
+! Select row 3 Set from: Default
+! rofi.kb-select-3:                    Super+3
+! Select row 4 Set from: Default
+! rofi.kb-select-4:                    Super+4
+! Select row 5 Set from: Default
+! rofi.kb-select-5:                    Super+5
+! Select row 6 Set from: Default
+! rofi.kb-select-6:                    Super+6
+! Select row 7 Set from: Default
+! rofi.kb-select-7:                    Super+7
+! Select row 8 Set from: Default
+! rofi.kb-select-8:                    Super+8
+! Select row 9 Set from: Default
+! rofi.kb-select-9:                    Super+9
+! Select row 10 Set from: Default
+! rofi.kb-select-10:                   Super+0
+! Go to the previous column Set from: Default
+! rofi.ml-row-left:                    ScrollLeft
+! Go to the next column Set from: Default
+! rofi.ml-row-right:                   ScrollRight
+! Select previous entry Set from: Default
+! rofi.ml-row-up:                      ScrollUp
+! Select next entry Set from: Default
+! rofi.ml-row-down:                    ScrollDown
+! Select hovered row Set from: Default
+! rofi.me-select-entry:                MousePrimary
+! Accept hovered row Set from: Default
+! rofi.me-accept-entry:                MouseDPrimary
+! Accept hovered row with custom action Set from: Default
+! rofi.me-accept-custom:               Control+MouseDPrimary

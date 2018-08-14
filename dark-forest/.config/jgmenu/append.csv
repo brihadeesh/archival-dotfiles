@@ -1,0 +1,11 @@
+^sep()
+Exit,^root(exit)
+
+exit,^tag(exit)
+Lock,lock.sh
+Suspend,systemctl -i suspend && lock.sh,systemctl suspend && lock.sh
+Logout,xd
+Reboot,systemctl -i reboot,systemctl reboot
+Power off,systemctl -i poweroff,systemctl poweroff
+^sep()
+^back()
