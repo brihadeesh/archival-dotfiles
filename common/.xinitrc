@@ -64,5 +64,6 @@ case $session in
     xfce|xfce4) exec startxfce4 ;;
     openbox)    exec openbox-session ;;
     awesome)    exec awesome ;;
+	2bwm)		exec 2bwm & ~/.config/2bwm/autostart & termite;;
     *)          exec "$session" # Unknown, try running it
 esac

@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+# dunst
+dunst -c ~/.config/dunst/dunstrc &
+
+# Numlock
+numlockx on &
+
+# Polkit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# ???
+fix_xcursor
+xsetroot -cursor_name left_ptr &
+
+# Redshift
+redshift &
+
+# Polybar(s)
+$HOME/.config/2bwm/launch.sh 2bwm &
+
+# Hide mousecursor when inactive
+unclutter -root &
+
+# Wallpaper and Compositor
+nitrogen --restore; sleep 1; compton -b &
