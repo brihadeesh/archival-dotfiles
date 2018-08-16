@@ -9,7 +9,7 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar -q top &
-polybar -q bottom &
+polybar -q -c ~/.config/i3/config-polybar top &
+polybar -q -c ~/.config/i3/config-polybar bottom &
 
 notify-send "Welcome to i3-gaps"

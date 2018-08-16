@@ -7,7 +7,7 @@
 
 
 # session to run if none passed as first arg ($1)
-session="${1:-bspwm}"
+session="${1:-i3}"
 
 # set environment wm for use in scripts
 export WM="$session"

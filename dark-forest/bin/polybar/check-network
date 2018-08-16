@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 count=0
-SSID=$(iwgetid -r)
+SSID=$(iwgetid -r ; sleep 5)
 disconnected=""
 disconnected2=""
 disconnected3=""

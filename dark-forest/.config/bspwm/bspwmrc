@@ -119,6 +119,7 @@ numlockx on &
 
 # Polkit agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon --start --components=pkcs11 &
 
 # ???
 #fix_xcursor &
