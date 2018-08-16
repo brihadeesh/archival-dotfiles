@@ -8,7 +8,7 @@ stow -v -t ~/ common <theme-you-want-installed>
 ```
 Themes currently available are listed below.
 
-### dark-forest
+### dark-forest - bspwm (current)
 Not sure why I've named it this!
 
 ![scrot 1](screenshots/scr_1534274651.png)*busy: neovim with Goyo; ncmpcpp and cava*
@@ -17,7 +17,13 @@ Not sure why I've named it this!
 
 ![scrot 3](screenshots/scr_1534275042.png)*neovim with Goyo; spotify*
 
+### dark-forest - i3-gaps
 
+![scrot 4](screenshots/scr-22:15:37.png)*clean*
+
+![scrot 5](screenshots/scr-22:09:18.png)*busy: neovim*
+
+![scrot 6](screenshots/scr-22:09:53.png)*busy: neovim with Goyo*
 
 
 
