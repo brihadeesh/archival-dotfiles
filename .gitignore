@@ -11,13 +11,13 @@
 /.local/var/*
 !/.local/var/mpd
 
-/dark-forest/.ncmpcpp/error.log
-/dark-forest/.config/nvim/.netrwhist
-/dark-forest/.config/nvim/plugged/
-/common/.mpd/mpd.db
-/common/.mpd/mpd.log
-/common/.mpd/mpd.pid
-/common/.mpd/mpdstate
+dark-forest/.ncmpcpp/error.log
+dark-forest/.config/nvim/.netrwhist
+dark-forest/.config/nvim/plugged/
+common/.mpd/mpd.db
+common/.mpd/mpd.log
+common/.mpd/mpd.pid
+common/.mpd/mpdstate
 
 
 # unclutter untracked
