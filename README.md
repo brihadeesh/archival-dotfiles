@@ -1,3 +1,6 @@
+### I currently use a different setup
+See [city-lights](https://github.com/ictinaetus/city-lights) for a more recent set of dotfiles; some more soon to come. I'm maintaining separate repos for each so that it's easier to access older setups later.
+
 # dotfiles
 A (hopefully) neatly maintained repo for my configurations. I use currently bspwm but have added an incomplete set of configs for my i3-gaps setup as well. I believe that might have issues.
 
